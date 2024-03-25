@@ -4,3 +4,24 @@ The finance tracker app is designed to help individuals manage their personal fi
 ## Author
 NEHEMIAH CHERUIYOT
 
+## Features
+### User Registration:
+Users can create an account by providing a username, email, and password. The system securely stores user information.
+
+### User Authentication: 
+Registered users can log in with their username and password to access their financial data.
+
+### Transaction Management: 
+Users can add new transactions with descriptions and amounts, categorizing them into predefined expense categories. Transactions are timestamped and linked to user accounts.
+
+### Investment Tracking: 
+Users can create and manage investment records, including the name and initial amount. This allows users to monitor their investments and track their growth over time.
+
+### Goal Setting: 
+Users can set financial goals by specifying a description and target amount. The system helps users work towards their financial objectives.
+
+### Expense Categories:
+The system provides a set of predefined expense categories, making it easy for users to categorize their transactions.
+
+### Database Storage: 
+All user data, including transactions, investments, and goals, is stored securely in an SQLite database.
