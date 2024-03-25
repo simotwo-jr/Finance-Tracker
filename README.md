@@ -25,3 +25,14 @@ The system provides a set of predefined expense categories, making it easy for u
 
 ### Database Storage: 
 All user data, including transactions, investments, and goals, is stored securely in an SQLite database.
+
+## Usage
+The Personal Finance Tracker CLI provides a set of commands to manage your finances:
+
+register: Create a new user account.
+login: Log in to an existing account.
+create_transaction: Add a new transaction.
+create_investment: Add a new investment.
+create_goal: Set a financial goal.
+exit: Quit the application.
+Follow the prompts and input the required information for each command.
