@@ -36,3 +36,6 @@ create_investment: Add a new investment.
 create_goal: Set a financial goal.
 exit: Quit the application.
 Follow the prompts and input the required information for each command.
+
+## License
+This project is under the MIT License
