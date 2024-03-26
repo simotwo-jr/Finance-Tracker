@@ -25,11 +25,10 @@ def register():
             user.set_password(password)
             session.add(user)
             session.commit()
-            print("User {} created.".format(username))
+            print(f"User {username} created.")
             break
         except ValueError as e:
-            print("Error: {}".format(e))
-
+            print(f"Error: {e}")
 
 # Define a CLI command for user login
 @cli.command()
@@ -70,8 +69,7 @@ def create_transaction(user_id):
     categories = session.query(ExpenseCategory).all()
     print("Existing Expense Categories:")
     for category in categories:
-        print("{}: {}".format(category.id, category.name))
-
+        print(f"{category.id}: {category.name}")
 
     while True:
         category_id = input("Select an expense category (ID): ")
@@ -86,8 +84,7 @@ def create_transaction(user_id):
     transaction = Transaction(description=description, amount=amount, user_id=user_id, category_id=category_id)
     session.add(transaction)
     session.commit()
-    print("Transaction created for user {}.".format(user_id))
-
+    print(f"Transaction created for user {user_id}.")
 
 # Define a CLI command for creating an investment
 @cli.command()
@@ -110,8 +107,7 @@ def create_investment(user_id):
     investment = Investment(name=name, initial_amount=initial_amount, user_id=user_id)
     session.add(investment)
     session.commit()
-    print("Investment created for user {}.".format(user_id))
-
+    print(f"Investment created for user {user_id}.")
 
 # Define a CLI command for creating a financial goal
 @cli.command()
@@ -134,8 +130,7 @@ def create_goal(user_id):
     goal = Goal(description=description, target_amount=target_amount, user_id=user_id)
     session.add(goal)
     session.commit()
-    print("Goal created for user {}.".format(user_id))
-
+    print(f"Goal created for user {user_id}.")
 
 if __name__ == '__main__':
     cli()
