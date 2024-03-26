@@ -1,12 +1,9 @@
-# Import necessary modules and classes from other files
 from database import Session
 from models import User, Transaction, Goal, Investment, ExpenseCategory
 from sqlalchemy.orm.exc import NoResultFound
 
-# Create a session to interact with the database
 session = Session()
 
-# Function to create a new user account
 def create_user():
     while True:
         username = input("Enter username: ")
@@ -14,11 +11,9 @@ def create_user():
         password = input("Enter password: ")
 
         try:
-            # Create a new User instance with provided information
             user = User(username=username, email=email)
             user.set_password(password)
             
-            # Add the user to the database and commit the transaction
             session.add(user)
             session.commit()
             
@@ -27,17 +22,14 @@ def create_user():
         except ValueError as e:
             print(f"Error: {e}")
 
-# Function to log in an existing user
 def login():
     while True:
         username = input("Enter username: ")
         password = input("Enter password: ")
 
         try:
-            # Query the database for a user with the provided username
             user = session.query(User).filter_by(username=username).one()
             
-            # Check if the provided password matches the stored password hash
             if user.check_password(password):
                 print("Login successful.")
                 return user
@@ -46,7 +38,6 @@ def login():
         except NoResultFound:
             print("User not found. Please check your username.")
 
-# Function to create a new transaction for a user
 def create_transaction(user_id):
     description = input("Enter transaction description: ")
     amount = input("Enter transaction amount: ")
@@ -81,7 +72,6 @@ def create_transaction(user_id):
     session.commit()
     print(f"Transaction created for user {user_id}.")
 
-# Function to create a new investment for a user
 def create_investment(user_id):
     name = input("Enter investment name: ")
     initial_amount = input("Enter initial investment amount: ")
@@ -101,7 +91,6 @@ def create_investment(user_id):
     session.commit()
     print(f"Investment created for user {user_id}.")
 
-# Function to create a new financial goal for a user
 def create_goal(user_id):
     description = input("Enter goal description: ")
     target_amount = input("Enter target amount: ")
@@ -121,7 +110,6 @@ def create_goal(user_id):
     session.commit()
     print(f"Goal created for user {user_id}.")
 
-# Function to seed the database with expense categories
 def seed_expense_categories():
     categories = ['Education', 'Food', 'Entertainment', 'Dining Out', 'Transportation', 'Health', 'Luxury', 'Utilities',
     'Rent/Mortgage', 'Insurance (Health, Life, Auto, Homeowners)', 'Childcare', 'Pet Expenses', 'Travel/Vacation', 
@@ -141,7 +129,6 @@ def seed_expense_categories():
 
 
 
-# Main program entry point
 def main():
     print("Welcome to the Personal Finance Tracker!")
     while True:
@@ -167,8 +154,6 @@ def main():
             print("Invalid choice. Please select a valid option.")
 
 if __name__ == '__main__':
-    # Add new expense categories if they don't already exist
     seed_expense_categories()
 
-    # Start the main program
     main()

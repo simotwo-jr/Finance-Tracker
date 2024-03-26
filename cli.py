@@ -3,15 +3,12 @@ from database import Session
 from models import User, Transaction, Goal, Investment, ExpenseCategory
 from sqlalchemy.orm.exc import NoResultFound
 
-# Create a session to interact with the database
 session = Session()
 
-# Define a CLI group
 @click.group()
 def cli():
     """Personal Finance Tracker CLI"""
 
-# Define a CLI command for user registration
 @cli.command()
 def register():
     """Register a new user"""
@@ -30,7 +27,6 @@ def register():
         except ValueError as e:
             print(f"Error: {e}")
 
-# Define a CLI command for user login
 @cli.command()
 def login():
     """Log in as an existing user"""
@@ -48,7 +44,6 @@ def login():
         except NoResultFound:
             print("User not found. Please check your username.")
 
-# Define a CLI command for creating a transaction
 @cli.command()
 @click.option("--user-id", prompt="Enter user ID", type=int)
 def create_transaction(user_id):
@@ -86,7 +81,6 @@ def create_transaction(user_id):
     session.commit()
     print(f"Transaction created for user {user_id}.")
 
-# Define a CLI command for creating an investment
 @cli.command()
 @click.option("--user-id", prompt="Enter user ID", type=int)
 def create_investment(user_id):
@@ -109,7 +103,6 @@ def create_investment(user_id):
     session.commit()
     print(f"Investment created for user {user_id}.")
 
-# Define a CLI command for creating a financial goal
 @cli.command()
 @click.option("--user-id", prompt="Enter user ID", type=int)
 def create_goal(user_id):
