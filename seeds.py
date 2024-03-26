@@ -45,10 +45,12 @@ def create_user():
             session.add(user)
             session.commit()
             
-            print(f"User {username} created.")
+            print("User {} created.".format(username))
+
             break
         except ValueError as e:
-            print(f"Error: {e}")
+            print("Error: {}".format(e))
+
 
 # Function to log in an existing user
 def login():
@@ -77,14 +79,16 @@ def create_transaction(user_id):
     categories = session.query(ExpenseCategory).all()
     print("Existing Expense Categories:")
     for category in categories:
-        print(f"{category.id}: {category.name}")
+        print("{}: {}".format(category.id, category.name))
+
 
     category_id = get_valid_category_id(categories)
 
     transaction = Transaction(description=description, amount=amount, user_id=user_id, category_id=category_id)
     session.add(transaction)
     session.commit()
-    print(f"Transaction created for user {user_id}.")
+    print("Transaction created for user {}.".format(user_id))
+
 
 # Helper function to get a valid positive float input
 def get_positive_float_input(prompt):
